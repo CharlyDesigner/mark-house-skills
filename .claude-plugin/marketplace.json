@@ -1,0 +1,16 @@
+{
+  "name": "mark-house-skills",
+  "description": "Estudio completo de software y creación digital para Claude Code: dirección creativa y técnica, personajes, cámara, 3D, animación, IA generativa, postproducción, juegos, marca, TDD, depuración y QA.",
+  "owner": {
+    "name": "Carlos Alberto Navarro Franco"
+  },
+  "plugins": [
+    {
+      "name": "mark-house",
+      "source": "./plugins/mark-house",
+      "description": "30 skills en español: dos directores (creativo y de proyecto) que encadenan arte, personajes, guion, dirección de escena, IA de imagen y video, Blender, animación con código, Three.js, ffmpeg, diseño de juegos, identidad visual y un equipo de ingeniería con TDD, depuración, QA y guardarrailes.",
+      "category": "productivity",
+      "tags": ["español", "creativo", "3d", "animacion", "video", "ia", "blender", "ffmpeg", "tdd", "qa"]
+    }
+  ]
+}

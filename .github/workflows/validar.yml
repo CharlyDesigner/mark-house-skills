@@ -1,0 +1,27 @@
+name: Validar skills
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - run: python scripts/validar.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Probar hook de guardarrailes
+        run: |
+          H=plugins/mark-house/skills/guardarrailes-claude-code/scripts/guardarrailes.mjs
+          bloquea() { set +e; echo "{\"tool_input\":{\"command\":\"$1\"}}" | node $H 2>/dev/null; r=$?; set -e; [ $r -eq 2 ] || { echo "Debió bloquear: $1"; exit 1; }; }
+          permite() { set +e; echo "{\"tool_input\":{\"command\":\"$1\"}}" | node $H 2>/dev/null; r=$?; set -e; [ $r -eq 0 ] || { echo "Debió permitir: $1"; exit 1; }; }
+          bloquea "git push origin main"; bloquea "rm -rf /"; bloquea "wp db reset --yes"; bloquea "cat .env"
+          permite "git status"; permite "rm -rf node_modules"; permite "npm test"
+          echo "Guardarrailes OK"

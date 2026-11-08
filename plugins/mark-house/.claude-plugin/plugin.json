@@ -1,0 +1,10 @@
+{
+  "name": "mark-house",
+  "version": "1.0.0",
+  "description": "Estudio completo de software y creación digital: 30 skills en español con scripts probados de Blender, ffmpeg y Playwright.",
+  "author": {
+    "name": "Carlos Alberto Navarro Franco"
+  },
+  "license": "MIT",
+  "keywords": ["skills", "español", "creativo", "3d", "animacion", "video", "ia", "blender", "ffmpeg", "tdd", "qa", "wordpress"]
+}
