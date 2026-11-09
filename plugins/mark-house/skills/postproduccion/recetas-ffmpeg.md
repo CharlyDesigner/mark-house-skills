@@ -67,7 +67,10 @@ Recorte centrado (llena la pantalla, pierde los lados): `-vf "crop=ih*9/16:ih,sc
 ffmpeg -i clip.mp4 -vf "setpts=2.0*PTS" -af "atempo=0.5" lento.mp4                    # mitad de velocidad
 ffmpeg -i clip.mp4 -vf "minterpolate=fps=60:mi_mode=mci,setpts=2.0*PTS" -an suave.mp4  # cámara lenta interpolada
 ffmpeg -i clip.mp4 -vf "setpts=0.5*PTS" -af "atempo=2.0" rapido.mp4                   # doble velocidad
+# Tramo de una grabación larga a x4: -ss y -t ANTES de -i (si -t va después, limita la salida y trae 4× audio de más)
+ffmpeg -ss 600 -t 40 -i stream.mp4 -vf "setpts=PTS/4" -af "atempo=2.0,atempo=2.0" tramo_x4.mp4   # 40 s de fuente → 10 s
 ```
+`atempo` acepta 0.5–2.0 por instancia: encadénalo para x4, x6 (`2.0,2.0,1.5`), x8. Más en [edicion-larga.md](edicion-larga.md).
 
 ## Color
 ```bash

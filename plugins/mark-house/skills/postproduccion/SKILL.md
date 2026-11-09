@@ -21,6 +21,14 @@ Todas las recetas probadas están en [recetas-ffmpeg.md](recetas-ffmpeg.md). Tra
 6. **Subtítulos**: casi todo en redes se ve sin sonido. Frases cortas (≤ 7 palabras, ≤ 2 líneas), centradas en el tercio inferior pero fuera de la zona de la interfaz de la app. Genera SRT y quémalos para redes; deja el SRT aparte para YouTube.
 7. **Exportes** por plataforma (tabla abajo) y revisión final de cada archivo: duración, audio presente, sin cuadros negros al inicio/final, legible en un teléfono.
 
+## Grabaciones largas (streams, podcasts, gameplays)
+Si armas un episodio por script a partir de una lista de piezas (cortes, tramos acelerados, efectos, subtítulos), lee
+[edicion-larga.md](edicion-larga.md) antes de renderizar. Lo esencial:
+- Con `atempo`/`setpts`, `-ss` y `-t` van **antes** de `-i`; si no, cada tramo acelerado trae `vel ×` audio de más y se encima.
+- Transiciones y whooshes: subida ≤ 0.25 s y nunca encima de la voz; sin efectos de sonido en el avance.
+- Subtítulos: mídelos contra el audio final con `${CLAUDE_SKILL_DIR}/scripts/verificar_subtitulos.py` y corrige solo lo
+  que salga desfasado en varias mediciones.
+
 ## Formatos de entrega
 | Plataforma | Resolución | Notas |
 |---|---|---|
@@ -33,4 +41,4 @@ Todas las recetas probadas están en [recetas-ffmpeg.md](recetas-ffmpeg.md). Tra
 Códec por defecto: H.264 `-crf 18–23 -preset slow -pix_fmt yuv420p -movflags +faststart`, audio AAC 192 kbps 48 kHz.
 
 ## Antes de entregar
-Corre `ffprobe` sobre cada exporte y mira su hoja de contacto. Reporta duración, peso y loudness medido de cada archivo (ver la receta de medición). No digas "listo" sin eso.
+Corre `ffprobe` sobre cada exporte y mira su hoja de contacto. Reporta duración, peso y loudness medido de cada archivo (ver la receta de medición). Si hay subtítulos, verifícalos contra el audio final. No digas "listo" sin eso.

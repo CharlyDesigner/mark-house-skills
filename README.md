@@ -2,7 +2,7 @@
 
 **Un estudio completo de software y creación digital dentro de Claude Code.** Son 30 skills en español que le enseñan a Claude a trabajar como un equipo profesional: dirección creativa y técnica, guion, arte, personajes, cámara, 3D, animación, IA generativa, postproducción, diseño de juegos, marca e ingeniería con planeación, TDD, depuración, QA y seguridad.
 
-Los scripts incluidos están probados: Blender 5.2 headless (render, turntable, inspección y exportación), 31 recetas de ffmpeg, capturas de escenas web con Playwright y un hook de seguridad con 29/29 casos correctos. Este repo **aprende**: cuando una sesión descubre algo reutilizable, la skill `actualizar-mis-skills` lo integra aquí, y llega a todas tus máquinas con la siguiente actualización.
+Los scripts incluidos están probados: Blender 5.2 headless (render, turntable, inspección y exportación), 32 recetas de ffmpeg, capturas de escenas web con Playwright y un hook de seguridad con 29/29 casos correctos. Este repo **aprende**: cuando una sesión descubre algo reutilizable, la skill `actualizar-mis-skills` lo integra aquí, y llega a todas tus máquinas con la siguiente actualización.
 
 ---
 
@@ -70,7 +70,7 @@ Ambos llevan una bitácora de decisiones y costos. Cada skill funciona sola con 
 | `produccion-3d` | Pipeline de Blender por código, con scripts de render, turntable, inspección y exportación |
 | `animacion-con-codigo` | Remotion, GSAP, Lottie, Manim y los 12 principios de la animación |
 | `escenas-3d-web` | Three.js / R3F con presupuesto móvil, más script de captura y FPS |
-| `postproduccion` | Montaje, color, sonido, subtítulos y exportes por plataforma (31 recetas de ffmpeg) |
+| `postproduccion` | Montaje, color, sonido, subtítulos y exportes por plataforma (32 recetas de ffmpeg) |
 | `revision-visual` | Crítica de imágenes, renders, videos y webs, más hoja de contacto para ver un video completo |
 | `diseno-de-juego` | Pilares, bucles, mecánicas, niveles, game feel, GDD y vertical slice |
 | `identidad-visual` | Estrategia, logo en SVG, paleta y tipografía, tokens, manual de marca |
