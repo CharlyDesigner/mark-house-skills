@@ -2,6 +2,13 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.2.0] — 2026-11-09
+**mesa-de-edicion** (skill nueva, fase 1) — mesa de edición visual local para revisar una edición como en un editor:
+- `scripts/servidor.mjs` (Node 20+, sin dependencias, usa ffmpeg): línea de tiempo con miniaturas del render, forma de onda del audio final, pistas de video/audio/efectos/subtítulos/capítulos, reproductor sincronizado y panel de problemas automáticos (audio más largo que su lugar, clips encimados, huecos, efectos de transición sobre la voz, subtítulos encimados, fugaces o desfasados, duración del render).
+- API JSON para el agente: `/api/problemas`, `/api/resumen`, `/api/en?t=`, `/api/captura?t=`; estado del cabezal en texto para leerlo desde el navegador.
+- `formato-linea.md`: formato general `*.linea.json` y cómo escribir el exportador de cada motor.
+- Probada con un episodio real de 46 min (248 piezas) y con un proyecto de prueba con 7 errores sembrados: los 7 detectados, sin falsos positivos en el clip acelerado correcto.
+
 ## [1.1.0] — 2026-11-08
 **postproduccion** — edición de grabaciones largas (streams, podcasts, gameplays) sin audio encimado ni subtítulos desfasados:
 - Nueva referencia `edicion-larga.md`: con `atempo`/`setpts`, `-ss` y `-t` van antes de `-i` (si no, cada tramo acelerado trae vel× audio de más y se encima); efectos de transición/whoosh con subida ≤ 0.25 s y nunca sobre la voz; subtítulos medidos contra el audio final; plano de la línea de tiempo; reintentos al unir; lista de revisión.

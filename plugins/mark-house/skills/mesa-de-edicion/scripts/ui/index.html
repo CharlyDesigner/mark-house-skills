@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mesa de edición</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header class="barra">
+  <strong>Mesa de edición</strong>
+  <span id="archivo" class="tenue"></span>
+  <span class="esp"></span>
+  <span id="analisis" class="tenue"></span>
+  <button id="recargar" title="Volver a leer el archivo de la línea de tiempo">Recargar</button>
+</header>
+
+<main class="arriba">
+  <section class="visor">
+    <video id="video" preload="auto" playsinline></video>
+    <div id="sinRender" class="sin-render" hidden>Sin render: la línea de tiempo se ve completa, pero no hay video para reproducir.</div>
+  </section>
+  <aside class="panel">
+    <div class="panel-cab">
+      <h2>Problemas <span id="nProblemas" class="pill">0</span></h2>
+      <div class="filtros-prob">
+        <label><input type="checkbox" id="verErrores" checked> errores</label>
+        <label><input type="checkbox" id="verAvisos" checked> avisos</label>
+      </div>
+    </div>
+    <ol id="listaProblemas" class="lista"></ol>
+    <div class="aqui">
+      <h3>En el cabezal</h3>
+      <div id="enCabezal" class="en-cabezal"></div>
+      <!-- texto plano del estado, para que un agente lo lea con get_page_text / read_page -->
+      <pre id="estado" class="estado" aria-label="estado de la mesa"></pre>
+    </div>
+  </aside>
+</main>
+
+<nav class="controles">
+  <button id="play" title="Reproducir / pausa (espacio)">▶</button>
+  <span id="tiempo" class="tiempo">0:00.0</span>
+  <span class="tenue">/</span>
+  <span id="duracion" class="tenue">0:00.0</span>
+  <span class="esp"></span>
+  <span class="tenue">Zoom</span>
+  <button id="zoomMenos" title="Alejar (−)">−</button>
+  <button id="zoomMas" title="Acercar (+)">+</button>
+  <button id="ajustar" title="Ver toda la línea de tiempo (F)">Todo</button>
+  <span id="pistasToggle" class="toggles"></span>
+</nav>
+
+<section class="linea" id="linea">
+  <canvas id="lienzo"></canvas>
+  <div id="tip" class="tip" hidden></div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
