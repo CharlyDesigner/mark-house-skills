@@ -1,6 +1,6 @@
 # Mark House Skills
 
-**Un estudio completo de software y creación digital dentro de Claude Code.** Son 31 skills en español que le enseñan a Claude a trabajar como un equipo profesional: dirección creativa y técnica, guion, arte, personajes, cámara, 3D, animación, IA generativa, postproducción, diseño de juegos, marca e ingeniería con planeación, TDD, depuración, QA y seguridad.
+**Un estudio completo de software y creación digital dentro de Claude Code.** Son 32 skills en español que le enseñan a Claude a trabajar como un equipo profesional: dirección creativa y técnica, guion, arte, personajes, cámara, 3D, animación, IA generativa, postproducción, diseño de juegos, marca e ingeniería con planeación, TDD, depuración, QA y seguridad.
 
 Los scripts incluidos están probados: Blender 5.2 headless (render, turntable, inspección y exportación), 32 recetas de ffmpeg, capturas de escenas web con Playwright y un hook de seguridad con 29/29 casos correctos. Este repo **aprende**: cuando una sesión descubre algo reutilizable, la skill `actualizar-mis-skills` lo integra aquí, y llega a todas tus máquinas con la siguiente actualización.
 
@@ -83,6 +83,7 @@ Ambos llevan una bitácora de decisiones y costos. Cada skill funciona sola con 
 | `interrogar-plan` | Rondas de preguntas hasta no dejar decisiones abiertas (software o creativo) |
 | `lenguaje-del-dominio` | `GLOSARIO.md` con los términos del negocio |
 | `escribir-spec` | PRD en `docs/specs/` |
+| `entrega-de-diseno` | Empaqueta un diseño para que Claude Code lo implemente sin romper nada: HANDOFF.md, prompt por etapas, storyboards numerados y videos de cada interacción |
 | `disenar-dos-veces` | 3–5 diseños opuestos en paralelo (UI o módulos) |
 | `plan-en-rebanadas` | Tickets verticales con bloqueos |
 | `construir-con-tdd` | Rojo → verde para web, Node, Python, PHP/WordPress, Electron, móvil, Unity, Unreal y Godot |

@@ -2,6 +2,14 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.3.0] — 2026-11-11
+**entrega-de-diseno** (skill nueva) — entrega de un rediseño a Claude Code sin que se equivoque ni dañe la funcionalidad:
+- `SKILL.md`: contenido del paquete (HANDOFF.md, PROMPT-CLAUDE-CODE.md, diseño de referencia, storyboards y videos), pasos, plantilla del prompt por etapas y modelo/esfuerzo recomendados (Opus 5.5 + `high`, verificado en la documentación el 2026-11-11).
+- `plantilla-handoff.md`: estructura de la especificación (reskin, tokens, animaciones, mapa pantalla → ruta, interacciones causa → efecto, responsivo, verificación).
+- `grabar-interacciones.md`: grabación por capturas con Playwright y 8 lecciones de grabaciones fallidas (barra fija que desvía clics, filtros con `role="tab"`, caché del visor, iframes, sliders).
+- `scripts/storyboard.py` (video o carpeta → hoja numerada) y `scripts/video_de_cuadros.py` (capturas con tiempos reales → MP4, recorta pausas). Probados con 9 grabaciones reales de un rediseño.
+- Clave: el agente lee imágenes pero no reproduce video; los storyboards son para él y los videos para el humano.
+
 ## [1.2.0] — 2026-11-09
 **mesa-de-edicion** (skill nueva, fase 1) — mesa de edición visual local para revisar una edición como en un editor:
 - `scripts/servidor.mjs` (Node 20+, sin dependencias, usa ffmpeg): línea de tiempo con miniaturas del render, forma de onda del audio final, pistas de video/audio/efectos/subtítulos/capítulos, reproductor sincronizado y panel de problemas automáticos (audio más largo que su lugar, clips encimados, huecos, efectos de transición sobre la voz, subtítulos encimados, fugaces o desfasados, duración del render).
