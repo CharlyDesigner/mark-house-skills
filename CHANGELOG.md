@@ -2,6 +2,15 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.4.0] — 2026-11-12
+**posts-desde-fotos** (skill nueva) — fotos reales a posts y carruseles de redes en 4:5 (1080×1350):
+- `SKILL.md`: un encuadre distinto por slide (portada amplia, zooms ≤ 1.5×, cierre), capas y retícula por defecto, titulares de 2 líneas con acento y cinta de subtítulo, trampas técnicas (línea base común con `anchor='ls'`, `python -I` e imports, subtítulo en posición fija) y revisión slide por slide antes de entregar.
+- `scripts/quitar_fondo_logo.py`: quita el fondo liso de un logo por flood-fill desde las esquinas (conserva el blanco interior) y agrega borde tipo sticker. Probado con un logo de 5000×5000.
+
+**logos-redes-svg** (skill nueva) — íconos de redes sociales oficiales en vez de dibujarlos a mano:
+- `scripts/generar_logos.py`: baja `simple-icons` (CC0) y genera `<red>.svg` (color de marca tomado del paquete), `-blanco.svg` y `-negro.svg` más `LEEME.txt`. Probado con facebook, instagram, tiktok y youtube.
+- Cómo pasarlos a PNG suave (`rsvg-convert` a 4× y reducir) y qué variante usar según el fondo.
+
 ## [1.3.0] — 2026-11-11
 **entrega-de-diseno** (skill nueva) — entrega de un rediseño a Claude Code sin que se equivoque ni dañe la funcionalidad:
 - `SKILL.md`: contenido del paquete (HANDOFF.md, PROMPT-CLAUDE-CODE.md, diseño de referencia, storyboards y videos), pasos, plantilla del prompt por etapas y modelo/esfuerzo recomendados (Opus 5.5 + `high`, verificado en la documentación el 2026-11-11).

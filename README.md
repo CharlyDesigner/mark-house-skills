@@ -1,6 +1,6 @@
 # Mark House Skills
 
-**Un estudio completo de software y creación digital dentro de Claude Code.** Son 32 skills en español que le enseñan a Claude a trabajar como un equipo profesional: dirección creativa y técnica, guion, arte, personajes, cámara, 3D, animación, IA generativa, postproducción, diseño de juegos, marca e ingeniería con planeación, TDD, depuración, QA y seguridad.
+**Un estudio completo de software y creación digital dentro de Claude Code.** Son 34 skills en español que le enseñan a Claude a trabajar como un equipo profesional: dirección creativa y técnica, guion, arte, personajes, cámara, 3D, animación, IA generativa, postproducción, diseño de juegos, marca e ingeniería con planeación, TDD, depuración, QA y seguridad.
 
 Los scripts incluidos están probados: Blender 5.2 headless (render, turntable, inspección y exportación), 32 recetas de ffmpeg, capturas de escenas web con Playwright y un hook de seguridad con 29/29 casos correctos. Este repo **aprende**: cuando una sesión descubre algo reutilizable, la skill `actualizar-mis-skills` lo integra aquí, y llega a todas tus máquinas con la siguiente actualización.
 
@@ -75,6 +75,8 @@ Ambos llevan una bitácora de decisiones y costos. Cada skill funciona sola con 
 | `mesa-de-edicion` | Mesa de edición visual local: línea de tiempo con miniaturas, onda, reproductor y problemas automáticos (audio encimado, huecos, subtítulos), con API para el agente |
 | `diseno-de-juego` | Pilares, bucles, mecánicas, niveles, game feel, GDD y vertical slice |
 | `identidad-visual` | Estrategia, logo en SVG, paleta y tipografía, tokens, manual de marca |
+| `posts-desde-fotos` | Fotos reales → posts y carruseles 4:5 con la marca: encuadres distintos por slide, titulares llamativos, logo de evento, tira de redes y script editable |
+| `logos-redes-svg` | Logos oficiales de Facebook, Instagram, TikTok, YouTube, WhatsApp y X en SVG (color, blanco, negro), sin dibujarlos a mano |
 
 ### Ingeniería
 | Skill | Para qué |
