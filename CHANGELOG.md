@@ -2,6 +2,11 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.7.0] — 2026-11-13
+**correo-con-dominio-propio** (skill nueva) — crear un correo con el dominio del usuario (`contacto@dominio`), probado de punta a punta con un dominio .com.mx en Cloudflare y hosting cPanel/WHM de InMotion:
+- `SKILL.md`: tabla para elegir el camino (Cloudflare Email Routing solo recibe; buzón en cPanel; Zoho; Workspace; servidor propio en el VPS desaconsejado y por qué), receta en 7 pasos (cuenta correcta, agregar dominio, leer valores en Email Deliverability, registros A `mail`/MX/SPF/DKIM/DMARC en DNS gris, buzón con contraseña que escribe el usuario, verificación con evidencia, datos de conexión por el hostname del servidor) y trampas (Email Routing choca con el MX de cPanel, lista de cPanel desactualizada tras crear, selector de dominio, spam, DMARC `p=none`).
+- `automatizar-paneles.md`: lecciones de operar cPanel, WHM y Cloudflare con el Chrome del usuario: refs y `form_input` en vez de coordenadas (los formularios se mueven al escribir), copiar y pegar valores largos en vez de transcribirlos, campos de solo lectura que no se pueden leer, no repetir un Submit, nunca teclear contraseñas.
+
 ## [1.6.0] — 2026-11-13
 **edicion-filmcraft** — versión vertical con cámara y nuevas trampas, probado en FilmCraft 0.20.1:
 - `scripts/reencuadre.py` (nuevo): reencuadre a pantalla completa desde un `plan.json` de focos por toma (paneo hacia quien va a hablar, acercamiento lento, golpes de zoom); abre y verifica la secuencia antes de tocar nada, borra keyframes con `toggleAnimation` y pone keyframe de posición en cada cambio de escala para no despegar la imagen del borde.
