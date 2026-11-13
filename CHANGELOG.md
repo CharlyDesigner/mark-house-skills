@@ -2,6 +2,14 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.4.0] — 2026-11-13
+Cuatro skills nuevas basadas en la serie "Architect" de Enrique Rocha / Hainrixz (MIT), reescritas en español con créditos y enlaces al original:
+- **direccion-de-arte-ia** — prompts de imagen por 11 bloques, ancla de fidelidad al producto real, luz y lente con esquemas probados, 8 delatores de "se ve a IA" y revisión de 20 segundos (referencias: `bloques.md`, `luz-y-lente.md`, `antipatrones.md`). Base: Creative Architect.
+- **campanas-visuales-ia** — producto → animar → avatar → UGC → estructura de anuncios de la competencia, en intenciones traducibles a cualquier MCP/API de generación, con reglas de dinero, consentimiento y honestidad. Base: Creative Architect.
+- **editor-reels-remotion** — pipeline de edición de reels con EDL en JSON versionada, aprobación de texto, validación de reglas, render a -14 LUFS, QA y sistema de estilos aprendidos. Base: Video Editor Architect.
+- **motion-graphics-remotion** — flujo con puertas (intake, referencias, marca, storyboard aprobado, stills, render por formato), tonos y zonas seguras 9:16. Base: Motion Architect.
+- Las instalaciones de los repos originales están documentadas y marcadas "(sin probar)" donde no se ejecutaron.
+
 ## [1.3.0] — 2026-11-11
 **entrega-de-diseno** (skill nueva) — entrega de un rediseño a Claude Code sin que se equivoque ni dañe la funcionalidad:
 - `SKILL.md`: contenido del paquete (HANDOFF.md, PROMPT-CLAUDE-CODE.md, diseño de referencia, storyboards y videos), pasos, plantilla del prompt por etapas y modelo/esfuerzo recomendados (Opus 5.5 + `high`, verificado en la documentación el 2026-11-11).

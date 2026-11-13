@@ -8,7 +8,7 @@
     {
       "name": "mark-house",
       "source": "./plugins/mark-house",
-      "description": "32 skills en español: dos directores (creativo y de proyecto) que encadenan arte, personajes, guion, dirección de escena, IA de imagen y video, Blender, animación con código, Three.js, ffmpeg, mesa de edición visual, diseño de juegos, identidad visual y un equipo de ingeniería con TDD, depuración, QA y guardarrailes.",
+      "description": "36 skills en español: dos directores (creativo y de proyecto) que encadenan arte, personajes, guion, dirección de escena, IA de imagen y video, Blender, animación con código, Three.js, ffmpeg, mesa de edición visual, diseño de juegos, identidad visual y un equipo de ingeniería con TDD, depuración, QA y guardarrailes.",
       "category": "productivity",
       "tags": ["español", "creativo", "3d", "animacion", "video", "ia", "blender", "ffmpeg", "tdd", "qa"]
     }
