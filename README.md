@@ -77,7 +77,7 @@ Ambos llevan una bitácora de decisiones y costos. Cada skill funciona sola con 
 | `postproduccion` | Montaje, color, sonido, subtítulos y exportes por plataforma (32 recetas de ffmpeg) |
 | `revision-visual` | Crítica de imágenes, renders, videos y webs, más hoja de contacto para ver un video completo |
 | `mesa-de-edicion` | Mesa de edición visual local: línea de tiempo con miniaturas, onda, reproductor y problemas automáticos (audio encimado, huecos, subtítulos), con API para el agente |
-| `edicion-filmcraft` | Edita proyectos de FilmCraft en vivo desde Claude Code: montaje, transcripción, subtítulos karaoke, motion graphics nativos, intro y cierre de marca, transiciones y color |
+| `edicion-filmcraft` | Edita proyectos de FilmCraft en vivo desde Claude Code: montaje, transcripción, subtítulos karaoke, motion graphics nativos, intro y cierre de marca, transiciones, color y versión vertical con cámara que sigue a quien habla |
 | `diseno-de-juego` | Pilares, bucles, mecánicas, niveles, game feel, GDD y vertical slice |
 | `identidad-visual` | Estrategia, logo en SVG, paleta y tipografía, tokens, manual de marca |
 

@@ -87,3 +87,25 @@ Para una parte festiva: `light_leaks` con valores por omisión (intensidad 70) e
 ## Logos con fondo liso
 `scripts/logo_sin_fondo.py logo.jpg logo.png 5` y revisa sobre fondo oscuro. Un umbral de 14 se comió el anillo
 blanco de un logo (blanco 255 sobre fondo 247); con 5 quedó bien.
+
+## Versión vertical 9:16 con cámara
+Probado: de 1280×720 a 1080×1920. El cliente rechazó la banda con fondo desenfocado; lo que quería era
+**pantalla completa con la cámara siguiendo a quien habla**.
+1. **Duplicar**: `project.select` la secuencia → `edit.duplicate` → `sequence.open` la copia →
+   `sequence.settings` `{width: 1080, height: 1920, name: ...}`. Todo queda en píxeles absolutos.
+2. **¿Quién habla?** Saca 2 cuadros por frase del exporte horizontal (30 % y 75 % de cada bloque de subtítulo)
+   en hojas de 4×5 y decide por boca abierta y gestos. Si es ambiguo, el contenido manda ("¡Quieto, X!" lo dice
+   quien no es X). Si hablan los dos, encuadra en medio (el producto).
+3. **Dónde está cada cara**: hoja de cada toma (inicio, mitad, final) con `drawgrid` cada 128 px de la toma original.
+4. **Plan** (`plan.json`): por toma, `foco` = [[cuadro, x], ...]. Llega al que va a hablar **6–8 cuadros antes**
+   de que hable (paneo rápido) y quédate ahí; `golpe` en los momentos fuertes; `golpe_entrada` en tomas que entran
+   con impacto. `fy` = altura de las caras (330 en 720 p).
+5. `python reencuadre.py plan.json --secuencia ID` → escala base = la que llena el cuadro + 3 % (275 % para 720p→1920),
+   acercamiento lento de +17 % por toma, posición limitada con 14 px de colchón.
+6. `python bordes.py --desde 3 --hasta 58 --detalle <tramos de golpes y paneos>` → debe salir 0.
+7. **Gráficos en vertical**: logo de marca arriba al centro (y ≈ 150), segundo logo arriba a la derecha, título
+   gancho y ≈ 420–455, subtítulos 72 px en y ≈ 1395 (arriba de los botones de la app), leyenda legal chica abajo
+   (y ≈ 1860), texto vertical de la marca en el costado izquierdo (rotación −90). Intro y tarjeta final:
+   cambia `size` del rectángulo de fondo a 1080×1920 y recoloca capas; las escalas de logos ×1.3–1.5.
+8. Imagen de producto con franjas: `anchor` en el centro del contenido y escala hasta llenar 1920 de alto.
+Con fuente 720p la ampliación es ~2.8×: se ve bien en el teléfono, más suave que el horizontal.

@@ -2,6 +2,16 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.6.0] — 2026-11-13
+**edicion-filmcraft** — versión vertical con cámara y nuevas trampas, probado en FilmCraft 0.20.1:
+- `scripts/reencuadre.py` (nuevo): reencuadre a pantalla completa desde un `plan.json` de focos por toma (paneo hacia quien va a hablar, acercamiento lento, golpes de zoom); abre y verifica la secuencia antes de tocar nada, borra keyframes con `toggleAnimation` y pone keyframe de posición en cada cambio de escala para no despegar la imagen del borde.
+- `scripts/bordes.py` (nuevo): busca franjas negras en las cuatro orillas cada N segundos y cuadro por cuadro en los tramos indicados; sale con código 1 si encuentra alguna.
+- `fc.py`: `abrir` confirma que la app cargó ese proyecto (a veces restaura el último) y `proyecto` lo corrige con `file.open`.
+- Receta "Versión vertical 9:16 con cámara": duplicar secuencia, identificar quién habla por frase con hojas de cuadros, plan de focos, retícula vertical (logo arriba al centro, subtítulos sobre los botones, leyenda legal abajo, texto lateral).
+- Trampas nuevas: `effects.resetParam` agrega un keyframe en el cabezal en vez de borrar; `setInterpolation` en lote creó keyframes de más; Auto Reframe no llena el cuadro vertical; los comandos actúan sobre la secuencia activa (verificarla siempre); `history.list` + `edit.undo` para recuperar; `sequence.settings` no reacomoda; `addTracks` con `videoAfter: 0` crea la pista hasta abajo.
+
+**postproduccion** — Reels/TikTok desde horizontal: pantalla completa reencuadrando con cámara que sigue a quien habla, no banda con fondo desenfocado salvo pedido; fps de la fuente si no es 30.
+
 ## [1.5.0] — 2026-11-13
 **edicion-filmcraft** (skill nueva) — editar proyectos de FilmCraft (.fcproj) en vivo, con el usuario viendo cada cambio en el programa:
 - `SKILL.md`: conexión en modo control (`--control` + `FILMCRAFT_CONTROL_TOKEN` de 64 hex; sin token la app apaga el servidor de control), flujo de trabajo, retícula 1280×720 con esquinas para logos fijos, y tabla de trampas probadas (`timeline.place` sobrescribe sin avisar, `render` no funciona con `--bridge`, puntos de `path` relativos, `fill_kind` por índice, índices de `setCharStyle` con ¡¿, conversión desde Premiere que pierde niveles de audio y transiciones de plugins).

@@ -1,6 +1,6 @@
 ---
 name: edicion-filmcraft
-description: 'Edita proyectos de FilmCraft (ArtCraft, archivos .fcproj) EN VIVO desde Claude Code: el usuario ve cada cambio en el programa abierto. Conecta la app en modo control, arma o rearma el montaje, transcribe la voz, crea subtítulos de reel con karaoke, motion graphics nativos (títulos gancho, stickers, logos fijos, estallidos), intro y cierre de marca, transiciones sincronizadas con los efectos de sonido, color con Lumetri, niveles de audio y exporta. Úsalo cuando digan "edita mi proyecto de FilmCraft", "usa el programa", "ponle subtítulos y cosas para llamar la atención", "hazle intro y final", "agrégale motion graphics", "ábrelo en FilmCraft", o cuando haya un .fcproj en la carpeta.'
+description: 'Edita proyectos de FilmCraft (ArtCraft, archivos .fcproj) EN VIVO desde Claude Code: el usuario ve cada cambio en el programa abierto. Conecta la app en modo control, arma o rearma el montaje, transcribe la voz, crea subtítulos de reel con karaoke, motion graphics nativos (títulos gancho, stickers, logos fijos, estallidos), intro y cierre de marca, transiciones sincronizadas con los efectos de sonido, color con Lumetri, niveles de audio, versión vertical 9:16 a pantalla completa con cámara que sigue a quien habla, y exporta. Úsalo cuando digan "edita mi proyecto de FilmCraft", "usa el programa", "ponle subtítulos y cosas para llamar la atención", "hazle intro y final", "agrégale motion graphics", "ábrelo en FilmCraft", "hazme la versión para reel/TikTok", "reencuádralo en vertical", o cuando haya un .fcproj en la carpeta.'
 argument-hint: "[proyecto.fcproj]"
 ---
 
@@ -16,7 +16,10 @@ Recetas de cada pieza (intro, logos, stickers, karaoke, cierre, color): [recetas
 2. Token: `python ${CLAUDE_SKILL_DIR}/scripts/fc.py token` → guárdalo en un archivo del scratchpad y en `FILMCRAFT_CONTROL_TOKEN`.
    Sin un token de 64 hex la app arranca pero **apaga el servidor de control** (el log dice "control server disabled").
 3. Abrir: `python ${CLAUDE_SKILL_DIR}/scripts/fc.py abrir proyecto.fcproj` (puerto `FILMCRAFT_PORT`, 4700 por omisión).
+   La app a veces **restaura el último proyecto** en vez del que le pasas: `abrir` lo comprueba y corrige con `file.open`.
 4. Probar: `python ${CLAUDE_SKILL_DIR}/scripts/fc.py seq` → lista pistas y clips.
+5. Con varias secuencias (horizontal y vertical), **todo script abre y verifica su secuencia** (`sequence.open` + id y
+   tamaño) antes de editar: los comandos actúan sobre la secuencia activa, y la activa es la última que abriste.
 - Nunca edites el `.fcproj` a mano ni en modo headless mientras la app lo tiene abierto: al guardar, la app lo pisa.
 - Si el usuario guardó cambios hace poco, vuelve a inspeccionar la secuencia antes de editar: lo que creías que había puede ya no estar.
 
@@ -44,6 +47,9 @@ Tiempo: **254016000000 ticks por segundo**; la mayoría de comandos aceptan `fra
 8. **Revisión**: hoja de contacto de todo el video + cuadros a mitad de cada transición; mide el audio exportando
    un WAV (`file.exportMedia` format wav) y `ffmpeg -af ebur128` por tramo. Guarda con `file.save`.
 9. **Exporte** solo cuando el usuario lo apruebe: `file.exportMedia` con `loudnessLufs: -14` para redes.
+10. **Versión vertical (reel/TikTok)**: duplica la secuencia y reencuádrala **a pantalla completa con cámara que sigue a
+    quien habla** (`scripts/reencuadre.py`), no con banda y fondo desenfocado salvo que lo pidan. Receta completa en
+    [recetas-filmcraft.md](recetas-filmcraft.md#versión-vertical-916-con-cámara). Cierra con `scripts/bordes.py`.
 
 ## 4. Retícula (1280×720; escala proporcional en otros tamaños)
 | Zona | Uso |
@@ -69,6 +75,12 @@ Pregunta al cliente qué logos deben estar **siempre** en pantalla (marca del pr
 | Conversión desde Premiere (XML) | se pierden niveles de audio (Audio Levels 0.1 = −20 dB), transiciones de plugins (Animation Composer, .mogrt) y varios efectos: lee el reporte, restaura niveles (`clip.audioGain`) y repón transiciones donde quedaron los whoosh |
 | Volumen por tramos | keyframes de `volume` → `level` (dB relativos a la ganancia del clip) |
 | Transiciones | `sequence.applyVideoTransition` con `align: center`; si no hay material extra, prueba `start`/`end` |
+| `effects.resetParam` en un parámetro animado | **no borra** los keyframes: agrega uno al valor por omisión donde está el cabezal. Para limpiar usa `effects.toggleAnimation` |
+| `effects.setInterpolation` en lote (`keyframes` con tiempos de media) | en tomas con `sourceIn` ≠ 0 creó keyframes de más; evítalo o verifica el conteo de keyframes después |
+| Efecto **Auto Reframe** | recorta y acerca sin llenar el cuadro vertical; para 9:16 reencuadra a mano con keyframes |
+| Algo salió mal | `history.list` muestra las acciones y `edit.undo` deshace la última; compara con el `.fcproj` guardado |
+| `sequence.settings` (cambiar tamaño) | no reacomoda nada: todo queda en píxeles absolutos; reposiciona clips y gráficos |
+| `sequence.addTracks` con `videoAfter: 0` | inserta la pista **hasta abajo** (útil para fondos) |
 
 ## 6. Entregar
 Resume: qué cambió (montaje, subtítulos, gráficos, audio), qué palabras dudosas quedaron por confirmar, y que

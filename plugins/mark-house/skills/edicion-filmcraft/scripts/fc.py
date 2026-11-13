@@ -13,7 +13,8 @@ Uso como módulo:
 
 Uso por terminal:
     python fc.py token                       # genera un token nuevo (guárdalo en FILMCRAFT_CONTROL_TOKEN)
-    python fc.py abrir proyecto.fcproj       # abre FilmCraft en modo control con ese proyecto
+    python fc.py abrir proyecto.fcproj       # abre FilmCraft en modo control y confirma que cargó ESE proyecto
+    python fc.py proyecto proyecto.fcproj    # si la app restauró otro proyecto, abre el correcto
     python fc.py exec timeline.razor '{"time": 254016000000}'
     python fc.py seq                         # resumen de pistas y clips
 
@@ -87,6 +88,17 @@ def abrir(proyecto_fcproj):
     subprocess.Popen([_bin('FILMCRAFT_APP', 'filmcraft'), '--control', str(PORT), os.path.abspath(proyecto_fcproj)], env=env)
 
 
+def asegurar_proyecto(proyecto_fcproj):
+    """La app puede restaurar el último proyecto en vez del que se le pasó al abrir: compruébalo y corrígelo."""
+    ruta = os.path.normcase(os.path.abspath(proyecto_fcproj))
+    if os.path.normcase(proyecto()['path']) != ruta:
+        ex('file.open', {'path': os.path.abspath(proyecto_fcproj)})
+    actual = os.path.normcase(proyecto()['path'])
+    if actual != ruta:
+        raise RuntimeError(f'La app tiene abierto {actual}, no {ruta}')
+    return actual
+
+
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         sys.exit(__doc__)
@@ -95,7 +107,18 @@ if __name__ == '__main__':
         print(secrets.token_hex(32))
     elif accion == 'abrir':
         abrir(sys.argv[2])
-        print(f'FilmCraft abriéndose en modo control (puerto {PORT})')
+        import time
+        for _ in range(30):  # espera a que la app responda y confirma el proyecto
+            time.sleep(2)
+            try:
+                print(f'FilmCraft en modo control (puerto {PORT}) con {asegurar_proyecto(sys.argv[2])}')
+                break
+            except (RuntimeError, json.JSONDecodeError):
+                continue
+        else:
+            sys.exit('La app no respondió o no abrió ese proyecto')
+    elif accion == 'proyecto':
+        print(asegurar_proyecto(sys.argv[2]))
     elif accion == 'exec':
         print(json.dumps(ex(sys.argv[2], json.loads(sys.argv[3]) if len(sys.argv) > 3 else {}), ensure_ascii=False, indent=1))
     elif accion == 'seq':

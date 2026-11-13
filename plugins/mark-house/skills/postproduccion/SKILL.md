@@ -36,7 +36,7 @@ Si armas un episodio por script a partir de una lista de piezas (cortes, tramos 
 ## Formatos de entrega
 | Plataforma | Resolución | Notas |
 |---|---|---|
-| Reels / TikTok / Shorts | 1080×1920, 30 fps | Deja libres ~250 px arriba y ~350 px abajo para la interfaz |
+| Reels / TikTok / Shorts | 1080×1920, 30 fps (o los fps de la fuente) | Deja libres ~250 px arriba y ~350 px abajo para la interfaz. Desde horizontal: pantalla completa reencuadrando con cámara que sigue a quien habla (no banda con fondo desenfocado salvo pedido) |
 | Feed Instagram/Facebook | 1080×1350 (4:5) o 1080×1080 | 4:5 ocupa más pantalla |
 | YouTube | 1920×1080 o 3840×2160, 24/30/60 fps | Miniatura aparte 1280×720 |
 | Web (hero en loop) | 1920×1080 o menor, sin audio | MP4 H.264 + WebM VP9, < 5 MB, `muted playsinline loop` |
