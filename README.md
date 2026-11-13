@@ -1,6 +1,6 @@
 # Mark House Skills
 
-**Un estudio completo de software y creación digital dentro de Claude Code.** Son 36 skills en español que le enseñan a Claude a trabajar como un equipo profesional: dirección creativa y técnica, guion, arte, personajes, cámara, 3D, animación, IA generativa, postproducción, diseño de juegos, marca e ingeniería con planeación, TDD, depuración, QA y seguridad.
+**Un estudio completo de software y creación digital dentro de Claude Code.** Son 37 skills en español que le enseñan a Claude a trabajar como un equipo profesional: dirección creativa y técnica, guion, arte, personajes, cámara, 3D, animación, IA generativa, postproducción, diseño de juegos, marca e ingeniería con planeación, TDD, depuración, QA y seguridad.
 
 Los scripts incluidos están probados: Blender 5.2 headless (render, turntable, inspección y exportación), 32 recetas de ffmpeg, capturas de escenas web con Playwright y un hook de seguridad con 29/29 casos correctos. Este repo **aprende**: cuando una sesión descubre algo reutilizable, la skill `actualizar-mis-skills` lo integra aquí, y llega a todas tus máquinas con la siguiente actualización.
 
@@ -77,6 +77,7 @@ Ambos llevan una bitácora de decisiones y costos. Cada skill funciona sola con 
 | `postproduccion` | Montaje, color, sonido, subtítulos y exportes por plataforma (32 recetas de ffmpeg) |
 | `revision-visual` | Crítica de imágenes, renders, videos y webs, más hoja de contacto para ver un video completo |
 | `mesa-de-edicion` | Mesa de edición visual local: línea de tiempo con miniaturas, onda, reproductor y problemas automáticos (audio encimado, huecos, subtítulos), con API para el agente |
+| `edicion-filmcraft` | Edita proyectos de FilmCraft en vivo desde Claude Code: montaje, transcripción, subtítulos karaoke, motion graphics nativos, intro y cierre de marca, transiciones y color |
 | `diseno-de-juego` | Pilares, bucles, mecánicas, niveles, game feel, GDD y vertical slice |
 | `identidad-visual` | Estrategia, logo en SVG, paleta y tipografía, tokens, manual de marca |
 

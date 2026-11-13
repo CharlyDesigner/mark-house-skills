@@ -2,6 +2,14 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.5.0] — 2026-11-13
+**edicion-filmcraft** (skill nueva) — editar proyectos de FilmCraft (.fcproj) en vivo, con el usuario viendo cada cambio en el programa:
+- `SKILL.md`: conexión en modo control (`--control` + `FILMCRAFT_CONTROL_TOKEN` de 64 hex; sin token la app apaga el servidor de control), flujo de trabajo, retícula 1280×720 con esquinas para logos fijos, y tabla de trampas probadas (`timeline.place` sobrescribe sin avisar, `render` no funciona con `--bridge`, puntos de `path` relativos, `fill_kind` por índice, índices de `setCharStyle` con ¡¿, conversión desde Premiere que pierde niveles de audio y transiciones de plugins).
+- `recetas-filmcraft.md`: título gancho, intro de marca (degradado, rayos, anillos, logo con rebote, zoom blur), logo fijo que late al mencionarlo, stickers (etiqueta, estallido, cinta, lettering), karaoke, transiciones sincronizadas con whoosh/glitch, color base con Lumetri, cierre con producto y tarjeta, mezcla de intro/cierre.
+- Scripts probados contra FilmCraft 0.20.1 en vivo: `fc.py` (token, abrir en modo control, exec, seq, exportar cuadro), `mg.py` (keyframes, estrellas, rebote, `place` que se niega a pisar una pista ocupada), `hoja.py` (hoja de contacto desde la app), `karaoke.py` (bloques automáticos ≤ 4 palabras, rebote, palabra activa resaltada, claves de color), `transcribir.py` (faster-whisper con tiempos por palabra) y `logo_sin_fondo.py` (quita fondo liso conservando blancos internos).
+
+**postproduccion** — reglas nuevas: revisar el reporte de conversión entre editores (niveles de audio, transiciones de plugins), subtítulos estilo reel con karaoke y tamaño ≈ 7 % del alto, confirmar nombres propios dudosos de la transcripción, y paso de gráficos y marca (retícula, logos fijos, gancho, transiciones en cada whoosh, intro ≤ 3 s, cierre con llamado a la acción).
+
 ## [1.4.0] — 2026-11-13
 Cuatro skills nuevas basadas en la serie "Architect" de Enrique Rocha / Hainrixz (MIT), reescritas en español con créditos y enlaces al original:
 - **direccion-de-arte-ia** — prompts de imagen por 11 bloques, ancla de fidelidad al producto real, luz y lente con esquemas probados, 8 delatores de "se ve a IA" y revisión de 20 segundos (referencias: `bloques.md`, `luz-y-lente.md`, `antipatrones.md`). Base: Creative Architect.
