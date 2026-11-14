@@ -2,6 +2,14 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.11.0] — 2026-11-14
+**apps-manejables-por-ia** (skill nueva) — arquitectura para que una app, editor o plugin funcione primero a mano y después lo manejen IAs sin reescribirlo:
+- Regla central: cada acción de la UI es un comando con nombre, esquema JSON, permiso, resultado y deshacer; la UI, la IA y la API usan los mismos comandos.
+- Estado como JSON versionado con migraciones y tokens en vez de valores sueltos.
+- Exposición por MCP según plataforma: WordPress 6.9+ con Abilities API + MCP Adapter oficial (ejemplo de `wp_register_ability`, sin probar), servidor MCP propio en Node y stdio en Electron.
+- Panel de IA propio: llave del proveedor solo en el servidor, OpenRouter con llaves por cliente con límite y reinicio, créditos prepagados o BYOK, modos "Rápido/Pro" en vez de nombres de modelo, y la IA generando datos validados contra el esquema en lugar de HTML libre.
+- Orden de construcción en cuatro pasos y checklist de la capa de IA. Basada en documentación oficial de WordPress y OpenRouter; el código PHP no se ejecutó.
+
 ## [1.10.0] — 2026-11-14
 **diseno-react-astryx** — receta probada de una app grande ("Mark House Studio OS": 15 módulos, 12 plantillas oficiales con ~12 900 líneas, 7 temas en vivo, paleta de comandos), verificada en dev, en `vite build` + `vite preview`, a 1440 y 375 px, y con `astryx doctor` sin fallos:
 - `recetas-probadas.md`: plantillas en masa con el CLI (solo dentro del proyecto, dependencias que piden), StyleX en Vite 8 con `@stylexjs/unplugin` (tipado a mano e inyección de CSS en dev), verificar las plantillas con StyleX en el build, rutas `lazy` con `HashRouter` y `base: './'`, los 7 temas anidados en una misma página, paleta de comandos global y `useToast`.
