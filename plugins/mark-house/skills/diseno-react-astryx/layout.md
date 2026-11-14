@@ -64,7 +64,7 @@ Al seleccionar una fila se abre un panel de ancho fijo en vez de navegar. `Layou
 // Los cuatro rangos en una fila
 <HStack gap={2}>
   <Text weight="semibold">API de pagos</Text>
-  <StatusDot variant="success" label="Sano" />
+  <StatusDot variant="success" label="Sano" />  {/* solo el punto: el label es accesible, no visible */}
   <Text color="secondary">v2.14</Text>
   <Text type="supporting">editado hace 3 h</Text>
 </HStack>

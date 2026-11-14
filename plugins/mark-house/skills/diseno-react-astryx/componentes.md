@@ -59,7 +59,7 @@ Se queda crudo solo si la semántica nativa es necesaria y no hay equivalente: u
 | Componente | Regla |
 |---|---|
 | `Badge` | Solo estados que piden atención o categorías; 1–2 palabras; nunca clicable ni repetido en cada fila; success/warning/error solo para estado del sistema |
-| `StatusDot` | Punto de estado con `label` (`isPulsing` para vivo) |
+| `StatusDot` | Punto de estado; su `label` es **solo el nombre accesible, no se pinta**: si el estado debe leerse, pon un `Text` al lado (`isPulsing` para vivo) |
 | `Banner` | `status` info/warning/error/success, `container` card/section; título corto y específico ("Pago fallido"); info/éxito descartables, error hasta resolverse; **no** es región en vivo: anuncia con `useAnnounce` (y `role="alert"` solo para urgente); di el estado en el texto, no solo en el icono |
 | `Toast` | Confirmación breve y no bloqueante (`type` info/error, `isAutoHide`) |
 | `Spinner`, `Skeleton`, `ProgressBar` | Carga indeterminada / con forma conocida (`index` para onda escalonada) / avance |
@@ -86,7 +86,7 @@ Controlados: `value` + `onChange`. Hay variantes `changeAction`/`clickAction` (a
 ### Tabla y lista
 | Componente | Notas |
 |---|---|
-| `Table` | `data`, `columns`, `idKey`, `density` compact/balanced/spacious, `dividers` rows/columns/grid/none, `isStriped`, `hasHover`, `virtualization`, `plugins`. Ordenable, selección con barra de acciones masivas, menú de desbordamiento por fila |
+| `Table` | `data`, `columns`, `idKey`, `density` compact/balanced/spacious, `dividers` rows/columns/grid/none, `isStriped`, `hasHover`, `virtualization`, `plugins`. Ordenable, selección con barra de acciones masivas, menú de desbordamiento por fila. La fila se tipa con `type`, no `interface`. Anchos: una columna `proportional(1, {minWidth})` y las cortas `pixel(n)`; clic en fila con un plugin `transformBodyRow` (ver [recetas-probadas.md](recetas-probadas.md)) |
 | `List` + `ListItem` / `Item` | `density`, `hasDividers`, `edge` padded/flush/outset/bleed, `header`, `reorderable`. `Item` unifica "contenido inicial + etiqueta + descripción + contenido final" |
 | `MetadataList` | Pares clave–valor de atributos |
 | `TreeList`, `OverflowList` | Jerarquía / lista que desborda a un menú |

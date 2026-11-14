@@ -1,6 +1,6 @@
 # Instalación, CSS, temas y CLI
 
-> Basado en la documentación de Astryx 0.7.17 (Beta). Los comandos del CLI vienen de esa documentación; **no se ejecutaron en esta máquina (sin probar)**. Verifica con `astryx help` en el proyecto.
+> Basado en la documentación de Astryx 0.7.17 (Beta). **Probados** con 0.7.16 en un proyecto Vite real: `help`, `init`, `build`, `search`, `template` (con `--type page` y `--skeleton`), `component --json`, `docs --index`, `theme add` y `doctor --built` (detalles y trampas en [recetas-probadas.md](recetas-probadas.md)). **Sin probar**: `theme build/eject/palette`, `swizzle`, `upgrade`, el editor experimental de temas y el servidor MCP.
 
 ## Instalar
 Requiere **React 19+**. Paquetes: `@astryxdesign/core`, `@stylexjs/stylex` (peer), un tema (`@astryxdesign/theme-neutral`) y, como dev, `@astryxdesign/cli`.
@@ -77,6 +77,9 @@ Temas de primera parte: **neutral, butter, chocolate, matcha, stone, gothic, y2k
 
 ### Modo oscuro
 Tuplas `[claro, oscuro]` en los valores de token: `'--color-accent': ['#0064E0', '#2694FE']`. `Theme mode="system"` sigue al SO. Para un conmutador: `useState<'light'|'dark'>` y `<Theme mode={mode}>`. **Temas anidados**: envuelve una sección en otro `<Theme>` (barra lateral oscura con contenido claro).
+
+### Crear o cambiar un tema: el CLI recomienda el editor experimental (sin probar)
+`astryx experimental theme editor new <nombre> --like neutral`, luego `editor set <nombre> <cosa> <valor>` o `editor how "<lo que quieres>"`, conecta con `astryx theme add <nombre>` y **después de cada cambio mira** `astryx experimental theme editor show <nombre> --png` (fotos de componentes reales, no toca la app). Colores y paletas van por el tema, nunca por overrides en `:root`.
 
 ### Crear/extender un tema propio (`defineTheme`)
 ```tsx

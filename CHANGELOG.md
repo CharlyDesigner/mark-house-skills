@@ -2,6 +2,13 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.9.0] — 2026-11-14
+**diseno-react-astryx** — probada armando una pantalla real (tabla de solicitudes con filtros, panel de detalle redimensionable y BottomSheet en móvil) con Vite 8, React 19 y Astryx 0.7.16, verificada en navegador a 1440, 900 y 375 px, en claro y oscuro, con `tsc`, `vite build`, `astryx doctor` y el auditor:
+- `recetas-probadas.md` (nuevo): receta de proyecto Vite con CSS plano (sin compilador StyleX), el CLI en la práctica (`build` en inglés, plantillas como demos de miles de líneas, `component --json`, `doctor --built` sobre el proyecto), imports que funcionan, lo que el sistema hace solo (menú móvil del AppShell, foco de vuelta en BottomSheet) y el patrón maestro-detalle con contrato responsivo.
+- Trampas encontradas y documentadas: `Table<T>` pide `type` y no `interface`; `proportional` con `minWidth` infla todas las columnas (usar `pixel` en las cortas); el `label` de `StatusDot` no se pinta; clic de fila con plugin `transformBodyRow`; BottomSheet que se abría solo; `SegmentedControl` y botones largos que se truncan en teléfono; opciones de Selector sin contexto.
+- `auditar-ui.mjs`: ya no cuenta los px de un breakpoint de media query.
+- `tematizacion-y-setup.md`, `plantillas.md`, `componentes.md`, `revision.md`: los comandos probados dejan de estar marcados como sin probar; se agrega `astryx doctor` y el editor experimental de temas (sin probar).
+
 ## [1.8.0] — 2026-11-14
 **diseno-react-astryx** (skill nueva) — diseño de UI de producto en React con criterio de sistema, destilado del sistema de diseño Astryx de Meta (MIT, 0.7.17, créditos y licencia en `creditos.md`):
 - `SKILL.md`: flujo de siete pasos de afuera hacia adentro (entender, armazón, estructura, espacio, responsivo, estados, verificar), 12 reglas de oro, tablas de decisión (contenedor, indicador de estado, control de selección, superficie flotante, carga), antipatrones de "UI genérica", pruebas rápidas (entrecerrar los ojos, sin bordes, línea de contenido) y qué hacer según el proyecto tenga Astryx u otra librería.

@@ -7,7 +7,7 @@ astryx template <nombre> <ruta>       # escribe el código en tu proyecto
 astryx template <nombre> --skeleton   # solo el esqueleto con anotaciones espaciales
 astryx template --list                # catálogo
 ```
-(Comandos según la documentación de Astryx; sin probar aquí.) Si no usas Astryx, copia la **estructura** (regiones, anchos, qué llena y qué lleva tope) y reimplementa con tus componentes.
+Probado con 0.7.16: escribe la idea de `build` **en inglés** (en español cae al shell genérico); con `template` agrega `--type page`. Las plantillas son demos grandes (`table-filter`: 4 623 líneas, con StyleX): para una pantalla concreta copia su marco con `--skeleton` y el JSX final, y escribe una página enfocada (ver [recetas-probadas.md](recetas-probadas.md)). Si no usas Astryx, copia la **estructura** (regiones, anchos, qué llena y qué lleva tope) y reimplementa con tus componentes.
 
 ## Shells de aplicación
 | Plantilla | Forma |

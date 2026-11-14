@@ -14,7 +14,7 @@ Sirve para **UI de producto** (apps, paneles, formularios, tablas, ajustes, chat
 | Situación | Qué hacer |
 |---|---|
 | `package.json` tiene `@astryxdesign/core` | Usa sus componentes y su CLI (`astryx`). Lee [tematizacion-y-setup.md](tematizacion-y-setup.md) para el flujo y los comandos |
-| Proyecto nuevo y el usuario quiere Astryx | Instálalo (React 19+, ver setup). Cuidado: es Beta, versión de referencia 0.7.x |
+| Proyecto nuevo y el usuario quiere Astryx | Sigue la receta probada de Vite en [recetas-probadas.md](recetas-probadas.md) (React 19+). Cuidado: es Beta, versión de referencia 0.7.x |
 | Hay otra librería (shadcn, MUI, Chakra, Tailwind a pelo) | **No migres sin que lo pidan.** Aplica las mismas reglas con lo que haya: mismos principios, tokens como variables CSS propias, mismos componentes equivalentes |
 | No hay nada | Propón una base (Astryx o shadcn/Tailwind), no inventes un sistema desde cero |
 
@@ -129,6 +129,7 @@ Al terminar una pantalla entrega: (1) el código que compila, (2) el **contrato 
 | [tematizacion-y-setup.md](tematizacion-y-setup.md) | Instalar, CSS (plano/Tailwind/StyleX), temas, modo oscuro, `defineTheme`, CLI, i18n/RTL, trabajar con IA |
 | [plantillas.md](plantillas.md) | 58 plantillas de página y cuál elegir |
 | [revision.md](revision.md) | Rúbrica de revisión, evidencia, prompt de auditoría |
+| [recetas-probadas.md](recetas-probadas.md) | **Léelo antes de codificar con Astryx**: receta de Vite, el CLI en la práctica y las trampas reales (Table con `type`, anchos `pixel`/`proportional`, StatusDot sin texto, clic de fila, BottomSheet, controles en teléfono) |
 | [creditos.md](creditos.md) | Origen y licencia MIT de Astryx |
 | `scripts/auditar-ui.mjs` | Auditor de TSX/JSX/CSS (sin dependencias) |
 

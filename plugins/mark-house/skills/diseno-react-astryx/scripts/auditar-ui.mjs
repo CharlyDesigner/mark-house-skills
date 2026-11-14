@@ -78,7 +78,9 @@ function listar(base) {
 function limpiar(texto) {
   return texto
     .replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, ' '))
-    .replace(/(^|[^:])\/\/.*$/gm, (m, p) => p + ' '.repeat(m.length - p.length));
+    .replace(/(^|[^:])\/\/.*$/gm, (m, p) => p + ' '.repeat(m.length - p.length))
+    // Los px de un breakpoint (`(max-width: 1024px)`) son estructurales, no espaciado.
+    .replace(/\(\s*(?:min|max)-(?:width|height)\s*:\s*\d+(?:\.\d+)?px\s*\)/g, (m) => ' '.repeat(m.length));
 }
 
 function lineaDe(texto, indice) {
