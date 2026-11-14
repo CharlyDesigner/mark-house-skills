@@ -2,6 +2,13 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.8.0] — 2026-11-14
+**diseno-react-astryx** (skill nueva) — diseño de UI de producto en React con criterio de sistema, destilado del sistema de diseño Astryx de Meta (MIT, 0.7.17, créditos y licencia en `creditos.md`):
+- `SKILL.md`: flujo de siete pasos de afuera hacia adentro (entender, armazón, estructura, espacio, responsivo, estados, verificar), 12 reglas de oro, tablas de decisión (contenedor, indicador de estado, control de selección, superficie flotante, carga), antipatrones de "UI genérica", pruebas rápidas (entrecerrar los ojos, sin bordes, línea de contenido) y qué hacer según el proyecto tenga Astryx u otra librería.
+- Referencias: `tokens.md` (valores de espacio, radio, tamaño, color claro/oscuro, tipografía, sombra, foco y movimiento), `layout.md` (shell, regiones, navegación, paneles, cabeceras, espaciado, densidad, grids y contrato responsivo), `componentes.md` (catálogo por categoría, reemplazos de HTML crudo y reglas por componente), `principios-de-diseno.md` (tipografía, jerarquía espacial, ritmo de controles, énfasis de color, elevación, forma, movimiento, estados, iconos y accesibilidad), `tematizacion-y-setup.md` (CSS plano/Tailwind/StyleX, temas, modo oscuro, `defineTheme`, CLI y trabajo con IA), `plantillas.md` (58 plantillas de página y cómo elegir), `revision.md` (rúbrica con evidencia y prompt de auditoría).
+- `scripts/auditar-ui.mjs` (probado con muestras buenas y malas y con las apps de ejemplo de Astryx): detecta HTML crudo con equivalente de componente, `<svg>` crudo, `#hex`/`rgb()`/`hsl()`, `px` fijos, `style={{}}`, imports `.css` propios, `@apply`, Card soup y Badge decorativo; salida en tabla o `--json`, y `--estricto` sale con código 1.
+- Los comandos del CLI de Astryx vienen de su documentación y no se ejecutaron (marcados como sin probar).
+
 ## [1.7.0] — 2026-11-13
 **correo-con-dominio-propio** (skill nueva) — crear un correo con el dominio del usuario (`contacto@dominio`), probado de punta a punta con un dominio .com.mx en Cloudflare y hosting cPanel/WHM de InMotion:
 - `SKILL.md`: tabla para elegir el camino (Cloudflare Email Routing solo recibe; buzón en cPanel; Zoho; Workspace; servidor propio en el VPS desaconsejado y por qué), receta en 7 pasos (cuenta correcta, agregar dominio, leer valores en Email Deliverability, registros A `mail`/MX/SPF/DKIM/DMARC en DNS gris, buzón con contraseña que escribe el usuario, verificación con evidencia, datos de conexión por el hostname del servidor) y trampas (Email Routing choca con el MX de cPanel, lista de cPanel desactualizada tras crear, selector de dominio, spam, DMARC `p=none`).
