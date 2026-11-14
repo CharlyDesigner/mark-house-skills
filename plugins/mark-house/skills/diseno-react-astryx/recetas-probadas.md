@@ -155,3 +155,9 @@ No resalta el primer resultado: el usuario baja con la flecha y Enter dispara `o
 | `doctor` avisa por fuentes externas de los temas (Figtree, Fraunces, Playwrite…) | Para producción, alojarlas localmente |
 | Las plantillas oficiales **no** pasan sus propias reglas (auditor: 56 colores fijos, 15 HTML crudos, 7 `style` en línea; `doctor`: 115 hallazgos) | Úsalas como punto de partida, no como modelo de estilo: tu código propio sí debe quedar en 0 |
 | El contenido de las plantillas está en inglés | Personaliza los textos visibles con reemplazos puntuales de cadenas (título, nombres) y prueba que compile |
+
+## Publicar la app como artefacto de claude.ai (probado)
+- **Página**: el publicador envuelve el archivo en su propio `<html><head><body>`, así que se publica un `.html` con solo `<title>`, los `<script type="module">`/`modulepreload`/`<link rel="stylesheet">` del build y `<div id="root">`; los `assets/` van como archivos acompañantes (`files` + `root` = carpeta del build; 102 archivos entraron sin problema).
+- **Rutas**: el visor solo deja pasar un `#nombre` simple, no `#/ruta`. Compila una variante con `MemoryRouter` (bandera `VITE_ARTEFACTO=1`) que arranca en el módulo del `#nombre` del enlace.
+- **U+FFFD**: el publicador rechaza archivos con el carácter `�`, y los bundles de Astryx lo traen literal en 5 lugares (escapes de CSS y lectura de code points). Reemplázalo a nivel de bytes (`b'\xef\xbf\xbd'` → `�`) y comprueba con `node --check`.
+- Fuentes de los temas desde Google Fonts: permitidas por la CSP del visor. Modo inicial: lee `data-theme` del documento o `prefers-color-scheme`; `body` con fondo explícito.
