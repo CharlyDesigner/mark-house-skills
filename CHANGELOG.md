@@ -2,6 +2,11 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.10.0] — 2026-11-14
+**diseno-react-astryx** — receta probada de una app grande ("Mark House Studio OS": 15 módulos, 12 plantillas oficiales con ~12 900 líneas, 7 temas en vivo, paleta de comandos), verificada en dev, en `vite build` + `vite preview`, a 1440 y 375 px, y con `astryx doctor` sin fallos:
+- `recetas-probadas.md`: plantillas en masa con el CLI (solo dentro del proyecto, dependencias que piden), StyleX en Vite 8 con `@stylexjs/unplugin` (tipado a mano e inyección de CSS en dev), verificar las plantillas con StyleX en el build, rutas `lazy` con `HashRouter` y `base: './'`, los 7 temas anidados en una misma página, paleta de comandos global y `useToast`.
+- Trampas nuevas: import circular entre catálogo y página (pantalla en blanco), `Kbd` invisible dentro de un botón primario, `doctor` que pide el `theme.css` junto al import del tema, fuentes externas de los temas, y que las plantillas oficiales no cumplen sus propias reglas de estilo (punto de partida, no modelo).
+
 ## [1.9.0] — 2026-11-14
 **diseno-react-astryx** — probada armando una pantalla real (tabla de solicitudes con filtros, panel de detalle redimensionable y BottomSheet en móvil) con Vite 8, React 19 y Astryx 0.7.16, verificada en navegador a 1440, 900 y 375 px, en claro y oscuro, con `tsc`, `vite build`, `astryx doctor` y el auditor:
 - `recetas-probadas.md` (nuevo): receta de proyecto Vite con CSS plano (sin compilador StyleX), el CLI en la práctica (`build` en inglés, plantillas como demos de miles de líneas, `component --json`, `doctor --built` sobre el proyecto), imports que funcionan, lo que el sistema hace solo (menú móvil del AppShell, foco de vuelta en BottomSheet) y el patrón maestro-detalle con contrato responsivo.

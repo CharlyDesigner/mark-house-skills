@@ -102,3 +102,56 @@ const panel = (
   label="Detalle" height="tall" padding={0}>{detalle}</BottomSheet>
 ```
 Dentro del detalle: `Section padding={4}` → `Divider` → `Section` con `MetadataList columns="single" label={{position: 'start', width: 104}}` → `Divider` → `Section` con `Heading level={3}` + lista de `Item`. Los divisores llegan a ambos bordes porque el panel tiene `padding={0}` y cada sección repone su margen.
+
+## Receta: app grande con muchas plantillas (probada: "Mark House Studio OS")
+Una sola app con 15 módulos (12 plantillas oficiales, ~12 900 líneas, más 3 páginas propias), los 7 temas intercambiables en vivo, paleta de comandos y rutas con carga diferida. Verificada en dev y en `vite build` + `vite preview`, a 1440 y 375 px, con `doctor` sin fallos.
+
+**1. Plantillas en masa.** El CLI solo escribe **dentro** del proyecto (`../carpeta` falla con "Path traversal is not allowed"):
+```bash
+npx astryx template ai-chat --type page src/modulos/ai-chat      # → src/modulos/ai-chat/page.tsx (export default)
+```
+Al copiar, lee el aviso de dependencias: casi todas piden `@heroicons/react`; las de métricas, `recharts`; algunas, `lucide-react`. Tamaños reales: canvas-editor 2 875 líneas, dashboard-alert-rail 1 590, form-wizard-vertical 1 381, theme-showcase 1 286. Usan StyleX: kanban-board, canvas-editor, dashboard-alert-rail, table-filter.
+
+**2. StyleX en Vite 8** (para esas plantillas):
+```ts
+// vite.config.ts — el paquete expone `.vite` en runtime, pero sus tipos fallan con TS 7: se tipa a mano
+import stylexUnplugin from '@stylexjs/unplugin'
+const stylex = (stylexUnplugin as unknown as {vite: (o: object) => PluginOption}).vite
+export default defineConfig({base: './', plugins: [stylex({devMode: 'full', useCSSLayers: true}), react()]})
+```
+```tsx
+// main.tsx — en dev el CSS de StyleX lo sirve el plugin
+if (import.meta.env.DEV) {
+  const link = document.createElement('link'); link.rel = 'stylesheet'; link.href = '/virtual:stylex.css';
+  document.head.appendChild(link); import('virtual:stylex:runtime');
+}
+// src/stylex-dev.d.ts:  declare module 'virtual:stylex:runtime';
+```
+**Verifica las plantillas con StyleX en el build** (`vite build && vite preview`): en dev el lienzo se veía roto (el CSS del plugin iba atrasado) y en el build estaba perfecto.
+
+**3. Rutas con carga diferida.** Cada módulo `lazy(() => import('./modulos/<id>/page'))` dentro de un `<Suspense fallback={<Spinner/>}>`: el build parte cada plantilla en su propio chunk. `HashRouter` + `base: './'` = `dist/` funciona desde cualquier carpeta o hosting estático. En dev, la primera visita a un módulo con `recharts` deja "Cargando…" mientras Vite optimiza la dependencia (504 *Outdated Optimize Dep*); recarga y queda.
+
+**4. Los 7 temas a la vez.** `npx astryx theme add <slug>` por cada tema regenera `astryx-themes.ts` con los 7 (cada uno importa su `theme.css` y `fonts.css`). Cambiar de tema = cambiar `themes[slug]` en `<Theme>`. Y se pueden **anidar**: un `<Theme>` distinto por tarjeta pinta los 7 en la misma página. Guarda tema y modo en `localStorage` con try/catch.
+
+**5. Paleta de comandos global.**
+```tsx
+const fuente = useMemo(() => createStaticSource([           // de '@astryxdesign/core/Typeahead'
+  {id: 'ir:/kanban', label: 'Tablero kanban', auxiliaryData: {group: 'Ir a'}},   // group = sección
+  {id: 'tema:gothic', label: 'Tema Gothic', auxiliaryData: {group: 'Cambiar tema'}},
+]), []);
+<CommandPalette isOpen={abierta} onOpenChange={setAbierta} searchSource={fuente} onValueChange={alElegir} label="Paleta de comandos" />
+// Ctrl/Cmd+K: listener de keydown en window que alterna `abierta`.
+```
+No resalta el primer resultado: el usuario baja con la flecha y Enter dispara `onValueChange(id)`.
+
+**6. Toasts:** `const toast = useToast(); toast({body: 'Render listo', type: 'info'})` (de `@astryxdesign/core/Toast`), sin proveedor extra.
+
+### Trampas de la app grande
+| Trampa | Solución |
+|---|---|
+| Página que importa el catálogo de módulos y el catálogo importa la página → `Cannot access 'X' before initialization` (pantalla en blanco) | No leas el catálogo al nivel del módulo: calcúlalo dentro del componente, o haz la página `lazy` |
+| `Kbd` dentro de un `Button` primario no se ve (oscuro sobre oscuro) | Ponlo al lado del botón, no en `endContent` |
+| `doctor` falla con "imports neutral without theme.css" (canvas-editor importa `@astryxdesign/theme-neutral/built`) | Agrega `import '@astryxdesign/theme-neutral/theme.css'` en ese mismo archivo |
+| `doctor` avisa por fuentes externas de los temas (Figtree, Fraunces, Playwrite…) | Para producción, alojarlas localmente |
+| Las plantillas oficiales **no** pasan sus propias reglas (auditor: 56 colores fijos, 15 HTML crudos, 7 `style` en línea; `doctor`: 115 hallazgos) | Úsalas como punto de partida, no como modelo de estilo: tu código propio sí debe quedar en 0 |
+| El contenido de las plantillas está en inglés | Personaliza los textos visibles con reemplazos puntuales de cadenas (título, nombres) y prueba que compile |
