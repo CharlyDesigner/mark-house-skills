@@ -2,6 +2,13 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.12.0] — 2026-11-14
+**kit-video-producto** (skill nueva) — pipeline para videos de producto 3D para redes, con la especificación completa para que Claude Code construya el kit dentro de cada proyecto:
+- `SKILL.md`: reparto de herramientas (Remotion arma, R3F hace el 3D en tiempo real, Blender Cycles las tomas estrella, la IA generativa solo en puntos concretos), flujo de 12 pasos, reglas que ya funcionaron en un comercial real (tiempo en compases a 100 BPM, lente por formato `2·atan(tan(fov/2)·k)`, zonas seguras verticales 270 px / y≈1536, Khronos PBR Neutral = `THREE.NeutralToneMapping`, material caramelo, voz de catálogo en vez de clonada o diseñada, −15 LUFS) y checklist de entrega.
+- `especificacion.md`: estructura del proyecto, esquema del JSON por video (frases, escenas, cámara y cortes por formato), módulo de movimiento compartido entre Remotion y Node, retícula por formato, componentes (`Video` con cortes por `Sequence` desplazada, `Escena3D`, `Subtitulos`, `useVolumen`, `ZonasSeguras`), scripts de voz, palabras, música, mezcla, cortes, medición, cámara y series, y el script de Blender (OptiX, ejes Three → Blender, cámara por cuadro en cuaternión, PNG con número de cuadro fuente).
+- Recetas de ffmpeg probadas en 6.1: sidechain + amix, loudnorm de dos pasadas, cortes por compás con fundidos de 15 ms y `ebur128`. Trampa documentada: en ffmpeg 6.1, `silenceremove` deja ≈ `stop_duration + stop_silence` de silencio; la receta exacta usa `silencedetect` + `atrim`.
+- Lo que no se ha construido todavía queda marcado como (sin probar).
+
 ## [1.11.0] — 2026-11-14
 **apps-manejables-por-ia** (skill nueva) — arquitectura para que una app, editor o plugin funcione primero a mano y después lo manejen IAs sin reescribirlo:
 - Regla central: cada acción de la UI es un comando con nombre, esquema JSON, permiso, resultado y deshacer; la UI, la IA y la API usan los mismos comandos.
