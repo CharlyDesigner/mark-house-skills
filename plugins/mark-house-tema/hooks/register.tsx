@@ -17,7 +17,7 @@ function lookArgs(look: LookDef): ThemeSetArgs {
   if (look.scene !== undefined) {
     return {
       colors: theme,
-      backdrop: { scene: look.scene, glass: { blur: 3, opacity: 0.42 } },
+      backdrop: { scene: look.scene, glass: { blur: 3, opacity: 0.25 } },
     }
   }
 

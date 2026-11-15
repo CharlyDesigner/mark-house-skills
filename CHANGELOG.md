@@ -2,6 +2,9 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [mark-house-tema 1.0.1] — 2026-11-15
+**mark-house-tema** — el vidrio sobre los fondos animados baja de 42 % a 25 % de opacidad para que se vean más.
+
 ## [mark-house-tema 1.0.0] — 2026-11-15
 **mark-house-tema** (plugin nuevo, aparte de `mark-house`) — tema para la app de escritorio y móvil de Claude Code:
 - 8 looks en claro y oscuro con paletas revisadas con el validador de contraste del sistema de diseño: Código, Píxeles, Galaxia, Geometría, Mark House, Océano, Atardecer y Lima.
