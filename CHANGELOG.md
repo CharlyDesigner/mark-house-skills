@@ -2,6 +2,13 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [mark-house-tema 1.0.0] — 2026-11-15
+**mark-house-tema** (plugin nuevo, aparte de `mark-house`) — tema para la app de escritorio y móvil de Claude Code:
+- 8 looks en claro y oscuro con paletas revisadas con el validador de contraste del sistema de diseño: Código, Píxeles, Galaxia, Geometría, Mark House, Océano, Atardecer y Lima.
+- Fondos animados en SVG + CSS (sin scripts): lluvia de código, pared de LEDs con personajes de píxeles, galaxia con planetas, cohete y estrellas fugaces, figuras que flotan; capa de calma en el centro y `prefers-reduced-motion`.
+- `/tema`, `/tema siguiente` y atajos `/temacodigo`, `/temapixeles`…; el tema elegido se guarda.
+- Probado en la app de escritorio (Windows). Lección: con `glass` fuerte (blur 22, opacidad 0.74) la app tapa el fondo por completo; quedó en blur 3, opacidad 0.42.
+
 ## [1.13.0] — 2026-11-15
 **auditoria-redes-y-pauta** (skill nueva) — auditoría de redes con datos reales y plan de pauta:
 - `SKILL.md`: flujo datos → causas → lo que sí funcionó → plan orgánico → pauta → KPIs; tabla de 8 causas de poco alcance con su umbral (audiencia diminuta, puro anuncio, skip rate > 70%, formato equivocado, sin cara, mensaje disperso, copy de plantilla, técnicos); reglas de arranque del reel; campañas Calentar y Conversaciones a WhatsApp; fórmula de cuánto pagar por conversación; checklist de entrega.

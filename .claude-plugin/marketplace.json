@@ -10,7 +10,31 @@
       "source": "./plugins/mark-house",
       "description": "42 skills en español: dos directores (creativo y de proyecto) que encadenan arte, personajes, guion, dirección de escena, IA de imagen y video, Blender, animación con código, Three.js, ffmpeg, mesa de edición visual, edición en vivo en FilmCraft, diseño de juegos, identidad visual y un equipo de ingeniería con TDD, depuración, QA y guardarrailes, y correo con dominio propio (MX, SPF, DKIM, DMARC).",
       "category": "productivity",
-      "tags": ["español", "creativo", "3d", "animacion", "video", "ia", "blender", "ffmpeg", "tdd", "qa"]
+      "tags": [
+        "español",
+        "creativo",
+        "3d",
+        "animacion",
+        "video",
+        "ia",
+        "blender",
+        "ffmpeg",
+        "tdd",
+        "qa"
+      ]
+    },
+    {
+      "name": "mark-house-tema",
+      "source": "./plugins/mark-house-tema",
+      "description": "Tema para la app de escritorio y móvil de Claude: 8 looks Mark House con fondos animados (lluvia de código, píxeles, galaxia, geometría, estudio, océano, atardecer y enfoque), en claro y oscuro. Se cambia con /tema.",
+      "category": "productivity",
+      "tags": [
+        "español",
+        "tema",
+        "theme",
+        "fondo-animado",
+        "mark-house"
+      ]
     }
   ]
 }

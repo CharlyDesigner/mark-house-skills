@@ -13,6 +13,13 @@ Abre Claude Code en cualquier carpeta y pega:
 
 > Clona https://github.com/CharlyDesigner/mark-house-skills en ~/mark-house-skills, lee su CLAUDE.md y sigue la sección "Si te piden instala todo lo del repo". Al terminar, dime qué dependencias me faltan.
 
+### Tema para la app de Claude (`mark-house-tema`)
+Plugin aparte: no son skills, cambia cómo se ve la app de escritorio y la móvil (colores y fondos animados). En la app: **+** junto a la caja de mensajes → **Plugins** → **Add marketplace** `CharlyDesigner/mark-house-skills` → **Add plugin** → `mark-house-tema`. En una terminal:
+```
+/plugin install mark-house-tema --marketplace CharlyDesigner/mark-house-skills
+```
+Luego `/tema` muestra los 8 temas (`/temacodigo`, `/temapixeles`, `/temagalaxia`, `/temageometria`, `/temamarkhouse`, `/temaoceano`, `/temaatardecer`, `/temalima`). Detalle en [`plugins/mark-house-tema/README.md`](plugins/mark-house-tema/README.md).
+
 ### Opción B — Como plugin (recomendada: se actualiza sola)
 Dentro de Claude Code:
 ```
@@ -136,6 +143,7 @@ Las reglas para editar el repo (estilo, versiones, pruebas, privacidad) están e
 .claude-plugin/marketplace.json                  catálogo del marketplace
 plugins/mark-house/.claude-plugin/plugin.json    nombre y versión del plugin
 plugins/mark-house/skills/<skill>/               SKILL.md + referencias + scripts/
+plugins/mark-house-tema/                         plugin del tema de la app (hooks, sin skills)
 scripts/validar.py                               validación (también corre en GitHub Actions)
 scripts/instalar.sh · instalar.ps1               instalación por copia
 CLAUDE.md                                        reglas para Claude Code en este repo

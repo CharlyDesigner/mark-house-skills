@@ -9,3 +9,4 @@ node_modules/
 *.bak-*
 capturas/
 frames/
+plugins/*/.claude-plugin/types/

@@ -1,0 +1,7 @@
+{
+  "name": "mark-house-tema",
+  "version": "1.0.0",
+  "description": "Tema Mark House para la app de Claude: 8 looks con fondos animados (código, píxeles, galaxia, geometría y más), en claro y oscuro. Cámbialo con /tema.",
+  "author": { "name": "Carlos Alberto Navarro Franco" },
+  "keywords": ["tema", "theme", "mark-house", "fondo-animado", "español"]
+}
