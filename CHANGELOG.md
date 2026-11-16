@@ -2,6 +2,14 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.14.0] — 2026-11-15
+**pixel-art-animado** (skill nueva) — videos en pixel art con motion graphics a partir de un kit reutilizable de personaje y escenarios:
+- `SKILL.md`: reparto IA/código, estructura del kit, flujo (arte base → pixelar → ubicar ojos y boca → guion → render → revisión), reglas de pixel art (NEAREST, cámara en píxeles enteros, paleta por moda, UI escalada por entero, luz de borde) y checklist.
+- `scripts/pixelizar.py`: pixel art real desde imágenes de IA — paleta compartida entre cuadros, reducción por moda, quita chroma y halos rosas. Probado.
+- `scripts/escena_pixel.py`: render 1080x1920 desde `kit.json` — entrada con rebote, saludo, parpadeo y 3 bocas dibujadas por código, boca guiada por el volumen de la voz, cámara alineada a la cuadrícula, globos con máquina de escribir, lower third, glitch RGB, blips chiptune; `--revisar` genera la hoja de la cara. Probado.
+- `prompts.md`: prompts probados para pose base desde foto, poses editando la base (alineación exacta) y escenario vertical.
+- Lecciones: Press Start 2P dibuja las mayúsculas acentuadas como minúsculas (se dibujan a mano); al leer coordenadas de una vista ampliada, calcular la escala real o los párpados y bocas caen fuera de lugar.
+
 ## [mark-house-tema 1.0.1] — 2026-11-15
 **mark-house-tema** — el vidrio sobre los fondos animados baja de 42 % a 25 % de opacidad para que se vean más.
 
