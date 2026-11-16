@@ -1,6 +1,6 @@
 # Mark House Skills
 
-**Un estudio completo de software y creación digital dentro de Claude Code.** Son 42 skills en español que le enseñan a Claude a trabajar como un equipo profesional: dirección creativa y técnica, guion, arte, personajes, cámara, 3D, animación, IA generativa, postproducción, diseño de juegos, marca e ingeniería con planeación, TDD, depuración, QA y seguridad.
+**Un estudio completo de software y creación digital dentro de Claude Code.** Son 43 skills en español que le enseñan a Claude a trabajar como un equipo profesional: dirección creativa y técnica, guion, arte, personajes, cámara, 3D, animación, IA generativa, postproducción, diseño de juegos, marca e ingeniería con planeación, TDD, depuración, QA y seguridad.
 
 Los scripts incluidos están probados: Blender 5.2 headless (render, turntable, inspección y exportación), 32 recetas de ffmpeg, capturas de escenas web con Playwright y un hook de seguridad con 29/29 casos correctos. Este repo **aprende**: cuando una sesión descubre algo reutilizable, la skill `actualizar-mis-skills` lo integra aquí, y llega a todas tus máquinas con la siguiente actualización.
 
@@ -81,6 +81,7 @@ Ambos llevan una bitácora de decisiones y costos. Cada skill funciona sola con 
 | `kit-video-producto` | Videos de producto 3D para redes con Remotion + R3F + tomas de Blender Cycles encimadas: un JSON por video, voz por frase, música en compases, ducking, −15 LUFS, subtítulos tipo reel, retícula de marca y cortes por formato |
 | `produccion-3d` | Pipeline de Blender por código, con scripts de render, turntable, inspección y exportación |
 | `animacion-con-codigo` | Remotion, GSAP, Lottie, Manim y los 12 principios de la animación |
+| `pixel-art-animado` | Videos pixel art + motion graphics desde un kit reutilizable: arte base con IA, pixelado real (cuadrícula y paleta), parpadeo y bocas por código, lip-sync por volumen, cámara alineada, globos, lower third, glitch y chiptune |
 | `escenas-3d-web` | Three.js / R3F con presupuesto móvil, más script de captura y FPS |
 | `postproduccion` | Montaje, color, sonido, subtítulos y exportes por plataforma (32 recetas de ffmpeg) |
 | `revision-visual` | Crítica de imágenes, renders, videos y webs, más hoja de contacto para ver un video completo |
