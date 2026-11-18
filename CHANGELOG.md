@@ -2,6 +2,12 @@
 
 Formato: [versión] — fecha. Versionado semántico (parche: corrección · menor: skill nueva o mejora · mayor: cambio que rompe el uso).
 
+## [1.14.0] — 2026-11-18
+**kit-demo-cliente** (skill nueva) — kit para que Claude Code construya demos vendibles por giro de negocio:
+- `SKILL.md`: análisis de la referencia (hoja de contacto con ffmpeg + transcripción con faster-whisper, con la trampa de `av.open(metadata_errors)` resuelta pasando el audio como arreglo numpy), decisiones previas (marca, lenguaje del mercado, políticas de plataformas como no condicionar las reseñas de Google), estructura del kit, reglas que cierran ventas (a prueba de fallas, modo presentación y modo en vivo con QR, simulador, clonar para prospecto, reiniciar, marca blanca) y tabla de modelo y esfuerzo en Claude Code.
+- `plantillas.md`: plantilla de cada archivo del kit.
+- `ejemplo-restaurante.md`: kit completo de una carta digital por QR para restaurantes con un negocio ficticio. La construcción con Claude Code queda marcada como (sin probar).
+
 ## [mark-house-tema 1.0.1] — 2026-11-15
 **mark-house-tema** — el vidrio sobre los fondos animados baja de 42 % a 25 % de opacidad para que se vean más.
 
